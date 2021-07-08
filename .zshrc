@@ -1,1 +1,0 @@
-/home/vietcao/.dotfiles/zshrc
