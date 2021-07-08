@@ -1,0 +1,1 @@
+/home/vietcao/.dotfiles/vimrc
