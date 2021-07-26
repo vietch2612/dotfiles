@@ -34,8 +34,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'bronson/vim-trailing-whitespace'
@@ -214,25 +212,39 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+hi User1 ctermfg=0 ctermbg=6
+
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ "\<C-V>" : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'R ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \}
+
+set statusline=
+set statusline+=%1*
+set statusline+=\ %{toupper(g:currentmode[mode()])}
+set statusline+=%{&modified?'[+]':''}
+set statusline+=%-7([%{&fileformat}]%)
+set statusline+=%*
+
+
+" set statusline+= %2*%3*%f%4*
+" set statusline+=\ %1*\ %1*%{mode()}
+" set statusline+=%1*\ %m%7*
+" set statusline+=%9*%=
+" set statusline+=\ %7*%1*\ %v:%l\/%L
+" set statusline+=\ %8*%6*\ %Y\ %5*
+
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
-
-" " vim-airline
-let g:airline_theme = 'ayu_mirage'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
 
 " Rainbow parentheses
 let g:rbpt_colorpairs = [
@@ -260,6 +272,10 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" Show line numbers
+set number
+highlight LineNr ctermfg=1 ctermbg=0
 
 "" Abbreviations
 "" no one is really happy until you have this shortcuts
@@ -413,6 +429,9 @@ if has('macunix')
   vmap <C-c> :w !pbcopy<CR><CR>
 endif
 
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !wl-copy<CR><CR>
+
 "" Buffer nav
 noremap gp :bp<CR>
 noremap gn :bn<CR>
@@ -510,8 +529,3 @@ nnoremap <leader>rit  :RInlineTemp<cr>
 vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
-
-"" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
