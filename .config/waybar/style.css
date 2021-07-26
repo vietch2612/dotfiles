@@ -1,0 +1,126 @@
+@define-color bg transparent;
+@define-color fg #cbccc6;
+@define-color yellow #ffcc66;
+@define-color green #bae67e;
+@define-color blue #73d0ff;
+@define-color cyan #5eefe6;
+@define-color red #ff3333;
+@define-color orange #ffa759;
+@define-color gray #707a8c;
+@define-color less_green #95e6cb;
+@define-color less_red #f28779;
+@define-color less_yellow #ffd580;
+@define-color purple #d4bfff;
+
+* {
+  border: none;
+  font-family: JetBrains Mono, feather;
+  font-weight: bold;
+  font-size: 12px;
+  /*color: @fg;*/
+  border-radius: 0px;
+}
+
+window {
+  /*font-weight: bold;*/
+}
+window#waybar {
+  background: transparent;
+}
+/*-----module groups----*/
+.modules-right {
+  margin: 0px 10px 0 0;
+}
+.modules-center {
+  margin: 0px 0 0 0;
+}
+.modules-left {
+  margin: 0px 0 0 10px;
+}
+/*-----modules indv----*/
+#workspaces button {
+  padding: 0px 10px;
+  color: @yellow;
+}
+#workspaces button:hover {
+  box-shadow: inherit;
+  color:  #1f2430;
+  background-color: @fg;
+}
+#workspaces button.focused {
+  background-color: @yellow;
+  color: #1f2430;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#backlight,
+#custom-sep,
+#idle_inhibitor {
+  padding: 0 0px;
+}
+#cpu {
+  color: @blue;
+}
+#memory{
+  color: @cyan;
+}
+#network {
+  color: @less_green;
+}
+#mode {
+  color: @less_red;
+  padding: 0 5px;
+}
+/*-----Indicators----*/
+#idle_inhibitor {
+  color: @blue;
+}
+#idle_inhibitor.activated {
+  color: @green;
+}
+#pulseaudio {
+  color: @green;
+}
+#pulseaudio.muted {
+  color: @red;
+}
+#battery {
+  color: @orange;
+}
+#battery.charging {
+  color: @orange;
+}
+#battery.warning:not(.charging) {
+  color: @orange;
+}
+#battery.critical:not(.charging) {
+  color: @red;
+}
+#temperature.critical {
+  color: @less_red;
+}
+#temperature {
+  color: @yellow;
+}
+#clock {
+  color: @less_red;
+}
+#backlight {
+  color: @less_yellow;
+}
+#window {
+  color: @green;
+}
+#custom-sep {
+  color: @orange;
+}

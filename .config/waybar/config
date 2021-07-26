@@ -1,0 +1,162 @@
+{
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": [
+        "idle_inhibitor",
+        "cpu",
+        "memory",
+        "network",
+        "pulseaudio",
+        "backlight",
+        "temperature",
+        "battery",
+    "clock"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "FIRST",
+            "2": "SECOND",
+            "3": "THIRD",
+            "4": "FOURTH",
+            "5": "FIFITH",
+            "6": "SIXTH",
+            "7": "SEVENTH",
+            "8": "EIGHT",
+            "urgent": "Urgent",
+            "focused": "Focused",
+            "default": "Default"
+        },
+        "persistant_workspaces": {
+            "1": ["eDP-1"],
+            "2": ["DP-2"],
+            "3": ["eDP-1"],
+            "4": ["DP-2"],
+            "5": ["eDP-1"],
+            "6": ["DP-2"],
+            "7": ["eDP-1"],
+            "8": ["DP-2"]
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "",
+        "max-length": 50,
+        "on-click": "networkmanager_dmenu",
+        "min-length": 14
+    },
+    "idle_inhibitor": {
+        "format": "{icon} {status}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "min-length": 15
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d %H:%M}",
+        "on-click": "gsimplecal"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false,
+        "min-length": 7,
+        "interval": 1
+    },
+    "memory": {
+        "format": " {}%",
+        "min-length": 7,
+        "interval": 1
+    },
+    "temperature": {
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input",
+        "critical-threshold": 60,
+        "format-critical": "{icon} {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
+        "min-length": 7,
+        "format-icons": [""],
+        "interval": 2
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-full": " 100%",
+        "min-length": 9,
+        "format-icons": [""]
+    },
+    "pulseaudio": {
+        "scroll-step": "5%", // %, can be a float
+        "format": "{icon} {volume}% ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " 0%",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "min-length": 7
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""],
+        "min-length": 8
+    },
+    "sway/window": {
+        "max-length": 30,
+        "format": " {}"
+    },
+    "custom/sep": {
+        "format": "  "
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    }
+}
