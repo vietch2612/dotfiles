@@ -14,7 +14,7 @@
     ],
     "sway/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "{icon}",
         "format-icons": {
             "1": "FIRST",
@@ -49,7 +49,8 @@
         "format-disconnected": "",
         "max-length": 50,
         "on-click": "networkmanager_dmenu",
-        "min-length": 14
+        "min-length": 14,
+        "tooltip": false
     },
     "idle_inhibitor": {
         "format": "{icon} {status}",
@@ -57,7 +58,8 @@
             "activated": "",
             "deactivated": ""
         },
-        "min-length": 15
+        "min-length": 15,
+        "tooltip": false
     },
     "tray": {
         "icon-size": 15,
@@ -77,6 +79,7 @@
     "memory": {
         "format": " {}%",
         "min-length": 7,
+        "tooltip": false,
         "interval": 1
     },
     "temperature": {
@@ -85,6 +88,7 @@
         "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
         "min-length": 7,
+        "tooltip": false,
         "format-icons": [""],
         "interval": 2
     },
@@ -97,6 +101,7 @@
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
+        "tooltip": false,
         "format-alt": "{time} {icon}",
         "format-full": " 100%",
         "min-length": 9,
@@ -121,12 +126,14 @@
         },
         "on-click-right": "pavucontrol",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": false,
         "min-length": 7
     },
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
         "max-length": 40,
+        "tooltip": false,
         "format-icons": {
             "spotify": "",
             "default": "🎜"
@@ -142,14 +149,17 @@
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
         "format-icons": ["", ""],
+        "tooltip": false,
         "min-length": 8
     },
     "sway/window": {
         "max-length": 30,
+        "tooltip": false,
         "format": " {}"
     },
     "custom/sep": {
-        "format": "  "
+        "format": "  ",
+        "tooltip": false,
     },
     "wlr/taskbar": {
         "format": "{icon}",
@@ -157,6 +167,7 @@
         "icon-theme": "Numix-Circle",
         "tooltip-format": "{title}",
         "on-click": "activate",
-        "on-click-middle": "close"
+        "on-click-middle": "close",
+        "tooltip": false,
     }
 }

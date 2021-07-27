@@ -53,6 +53,8 @@ Plug 'godlygeek/tabular'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-endwise'
 Plug 'ayu-theme/ayu-vim'
+Plug 'fladson/vim-kitty'
+Plug 'terminalnode/sway-vim-syntax'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'

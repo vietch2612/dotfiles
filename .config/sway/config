@@ -202,7 +202,7 @@ mode "resize" {
 }
 
 # ayu color
-# class                 border  bground text    indicator child_border
+# class                 border      bground text    indicator child_border
 client.focused          #707a8cb3 #707a8cb3 #CBCCC6 #707a8cb3   #707a8cb3
 client.focused_inactive #323a4c #323a4c #CBCCC6 #323a4c   #323a4c
 client.unfocused        #323a4c #323a4c #888888 #323a4c   #323a4c
